@@ -1,0 +1,433 @@
+/* styles.css */
+
+@font-face {
+    font-family: 'TrebuchetEAbold';
+    src: url('TrebuchetEAbold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'HelveticaNeueLT';
+    src: url('HelveticaNeueLTStd-Md.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'HelveticaRoundedLT';
+    src: url('HelveticaRoundedLTStd-Bd.ttf') format('truetype');
+}
+
+body {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    /* border: 1px solid red; */
+    height: 99.6vh;
+    width: 99.8vw;
+    overflow: hidden;
+    user-select: none;
+    /* font-family: HelveticaNeueLT; */
+    font-family: HelveticaRoundedLT;
+}
+
+#logo {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+#window {
+    background: url('bg.jpg');
+    background-size: cover;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    margin-top: 75px;
+    margin-left: 75px;
+    float: right;
+    border-radius: 8px;
+}
+
+#titlebar {
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; */
+    position: relative;
+    height: 35px;
+    -webkit-app-region: drag;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    background: rgb(0 0 0 / 50%);
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px 8px;
+    overflow: hidden;
+}
+
+#titlebar > * {
+    -webkit-app-region: no-drag;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    -webkit-app-region: drag;
+    font-family: TrebuchetEAbold;
+    color: white;
+}
+
+
+#controls {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+}
+
+#controls .controlbtn {
+    margin: 0;
+	width: 40px;
+	height: 35px;
+	border: 0;
+	outline: 0;
+	background: transparent;
+}
+
+#controls .controlbtn:hover {
+    background: rgba(255,255,255,.1);
+}
+
+#controls .controlbtn.close:hover {
+	background: #e81123;
+}
+
+#controls .controlbtn:not(.togglemusic) svg {
+    width: 10px;
+    height: 10px;
+}
+
+#controls .controlbtn.togglemusic svg.muted,
+#controls .controlbtn.togglemusic.muted svg:not(.muted) {
+    display: none;
+}
+
+#controls .controlbtn.togglemusic.muted svg.muted {
+    display: inline;
+}
+
+#controls .controlbtn svg path, 
+#controls .controlbtn svg rect, 
+#controls .controlbtn svg polygon {
+	fill: #fff;
+}
+
+button.button {
+    font-family: HelveticaRoundedLT;
+    background: linear-gradient(#cbe7ff, #7cb2df);
+    border: 1px solid black;
+    outline: inherit;
+    color: #103693;
+    border-radius: 5px;
+    padding: 5px 10px;
+    box-shadow: inset 0.2em 0.2em 0.2em 0 rgb(255 255 255 / 30%), inset -0.1em -0.1em 0.1em 0px rgb(77 109 170 / 20%), rgb(0 0 0 / 15%) 1px 1px 1px 0px;
+    cursor: pointer;
+}
+
+button.button:not(:active):hover {
+    background: linear-gradient(#daf3ff, #93c9f4);
+}
+
+button.button:active {
+    box-shadow: inset 0.1em 0.1em 0.1em 0 rgb(0 0 0 / 30%), inset -0.1em -0.1em 0.1em 0px rgb(255 255 255 / 30%), rgb(0 0 0 / 15%) 1px 1px 1px 0px;
+}
+
+label.checkbox {
+    display: block;
+    position: relative;
+    font-family: HelveticaRoundedLT;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding-top: 2px;
+}
+
+label.checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+span.checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 5px;
+    border: 1px solid rgb(0 0 0 / 25%);
+    box-shadow: inset 0.1em 0.1em 0.1em 0px rgb(0 0 0 / 30%);
+}
+
+label.checkbox:hover input ~ .checkbox {
+    background-color: #ccc;
+}
+  
+span.checkbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+label.checkbox input:checked ~ .checkbox:after {
+    display: block;
+}
+  
+label.checkbox .checkbox:after {
+    left: 10px;
+    bottom: 5px;
+    width: 5px;
+    height: 20px;
+    border: solid black;
+    border-width: 0 5px 5px 0;
+    transform: rotate(40deg);
+}
+
+label.checkbox .label {
+    padding-left: 30px;
+}
+
+#container {
+    position: relative;
+    height: calc(100% - 58px);
+    width: calc(100% - 20px);
+    margin: 5px 10px;
+    border-radius: 5px;
+    background: #2f4778d6;
+    border: 1px solid rgb(0 0 0 / 50%);
+    box-shadow: rgb(0 0 0 / 50%) 5px 4px 5px 0px;
+}
+
+.content {
+    position: absolute;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    margin: 10px;
+    padding: 15px;
+    background: radial-gradient(#a6dfff, #8cc6f7);
+    border-radius: 8px;
+    box-shadow: inset 0.2em 0.2em 0.2em 0 rgb(255 255 255 / 30%), inset -0.1em -0.1em 0.3em 0px rgb(0 0 0 / 70%), rgb(0 0 0 / 30%) 4px 4px 4px 1px;
+    overflow: hidden;
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    opacity: 0;
+    /* display: none; */
+}
+
+.content.active {
+    pointer-events: all;
+    opacity: 1;
+    /* display: block; */
+}
+
+#installProgress {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progressbar {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 22.5px;
+}
+
+.progressbar progress {
+    height: 40px;
+    width: 250px;
+}
+
+.progressbar span {
+    margin-left: 5px;
+    font-family: 'HelveticaNeueLT';
+    font-size: 0.8em;
+    width: 40px;
+    text-align: left;
+}
+
+#currentMessage {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
+    width: 100%;
+    text-align: center;
+}
+
+#currentMessage.change {
+    animation-name: changeMessage;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
+
+@keyframes changeMessage {
+    0%  {
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 1;
+    }
+    49% {
+      left: -100px;
+      transform: translateX(-50%);
+      opacity: 0;
+    }
+    50% {
+      left: inherit; 
+      right: -100px;
+      transform: translateX(50%);
+    }
+    51%  {
+      left: inherit; 
+      right: -100px;
+      transform: translateX(50%);
+    }
+    100% {
+      left: inherit; 
+      right: 50%;
+      transform: translateX(50%);
+      opacity: 1;
+    }
+}
+
+@keyframes changeMessage {
+    0%  {
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 1;
+    }
+    49% {
+      left: -100px;
+      transform: translateX(-50%);
+      opacity: 0;
+    }
+    50% {
+      left: inherit; 
+      right: -100px;
+      transform: translateX(50%);
+    }
+    51%  {
+      left: inherit; 
+      right: -100px;
+      transform: translateX(50%);
+    }
+    100% {
+      left: inherit; 
+      right: 50%;
+      transform: translateX(50%);
+      opacity: 1;
+    }
+}
+
+#summary {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'HelveticaNeueLT';
+    text-align: center;
+    margin: 30px 0;
+}
+
+#options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-height: -webkit-fill-available;
+    margin-bottom: 145px;
+    overflow-y: auto;
+}
+
+.pack {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    border: 1.5px solid #16588547;
+    border-radius: 15px;
+    padding: 5px;
+    margin: 5px;
+    filter: opacity(0.5) grayscale(1);
+    cursor: pointer;
+}
+
+.pack.selected {
+    filter: unset !important;
+}
+
+.pack:not(.required):hover {
+    filter: opacity(0.75) grayscale(1);
+}
+
+.pack.selected:not(.required):hover {
+    filter: opacity(0.75) !important;
+}
+
+.pack.required {
+    cursor: not-allowed;
+}
+
+.pack img {
+    width: 60px;
+    filter: opacity(0.8);
+}
+
+.pack > div {
+    margin-left: 10px;
+}
+
+.pack .subtitle {
+    font-family: 'HelveticaNeueLT';
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    transition: 1.0s;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(127, 127, 127, 0.6);
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: 1.0s;
+}
+
+::-webkit-scrollbar-thumb:vertical:hover,
+::-webkit-scrollbar-thumb:horizontal:hover {
+    background-color: rgb(110, 110, 110);
+    transition: 0.3s;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+
+
+::-webkit-scrollbar-thumb:vertical:active,
+::-webkit-scrollbar-thumb:horizontal:active {
+    background: rgba(95, 91, 91, 1);
+
+}
+
+::-webkit-scrollbar-corner {
+    background: none;
+}

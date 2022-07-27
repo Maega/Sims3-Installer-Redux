@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="./styles.css" rel="stylesheet">
+    <title>The Sims 3 Installer</title>
+</head>
+<body>
+
+    <div id="window">
+
+        <img id="logo" src="logo.png">
+
+        <div id="titlebar">
+            <div id="title">The Sims 3 Game Installer</div>
+            <div id="controls">
+                <button class="controlbtn togglemusic" onclick="audio.toggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="35" viewBox="0 0 16 16">
+                        <path d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13c0-1.104 1.12-2 2.5-2s2.5.896 2.5 2zm9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2z" />
+                        <path fill-rule="evenodd" d="M14 11V2h1v9h-1zM6 3v10H5V3h1z" />
+                        <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4V2.905z" />
+                    </svg>
+                    <svg class="muted" xmlns="http://www.w3.org/2000/svg" width="16" height="35" viewBox="0 0 16 16">
+                        <path style="transform: scale(0.13)" d="M7.6,22.7c-2.91-2.12-3.56-6.2-1.44-9.12s6.2-3.56,9.11-1.44L120.2,88.64c2.91,2.12,3.55,6.2,1.43,9.12 c-2.12,2.91-6.2,3.56-9.11,1.44L7.6,22.7L7.6,22.7z M88.85,
+                        51.97V23.09l-28.42,8.16l-24.01-17.5L96.79,0v57.76L88.85,51.97 L88.85,51.97z M36.33,57.46v45.08c0.03,0.32,0.05,0.64,0.05,0.96v0.01c0,7.76-8.14,15.46-18.19,17.2C8.15,
+                        122.44,0,117.55,0,109.79 c0-7.76,8.15-15.46,18.19-17.19c3.78-0.65,7.29-0.36,10.21,0.66V51.68L36.33,57.46L36.33,57.46z M92.87,98.69 c-2.77,2.77-6.71,4.88-11.09,
+                        5.63c-8.39,1.45-15.19-2.63-15.19-9.12c-0.01-4.03,2.62-8.04,6.62-10.84L92.87,98.69L92.87,98.69z"/>
+                    </svg>
+                </button>
+                <button class="controlbtn minimize" onclick="win.minimize()">
+                    <svg x="0px" y="0px" viewBox="0 0 10.2 1"><rect x="0" y="50%" width="10.2" height="1" /></svg>
+                </button>
+                <button class="controlbtn close" onclick="win.close()">
+                    <svg viewBox="0 0 10 10"><polygon points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1" /></svg>
+                </button>
+            </div>
+        </div>
+    
+        <div id="container">
+
+            <div class="content active">
+                
+                <div style="text-align: center;font-size: 1.2em;">The Sims 3 Complete Collection</div>
+                <div style="text-align: center;font-size: 0.85em;color: #3a4b60;">This tool will install The Sims 3 and any selected packs on your PC</div>
+
+                <div id="summary">
+                    <div>
+                        <div>Queued to install: <span id="numPacksToInstall"></span></div>
+                        <div>Storage required: <span id="sizeRequired"></span>GB</div>
+                    </div>
+                    <div>
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            <span class="checkbox"></span>
+                            <span class="label">Install Mod Support</span>
+                        </label>
+                        <button class="button" onclick="startInstall()">Start Installation</button>
+                    </div>
+                </div>
+
+                <div id="options">
+
+                    <div class="pack selected required" data-package="Base" data-size="7.3">
+                        <img src="icons/base.png">
+                        <div>
+                            <div class="title">The Sims 3: Base Game</div>
+                            <div class="subtitle">Base Game (Required)</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="EP01" data-size="3.5">
+                        <img src="icons/ep01.png">
+                        <div>
+                            <div class="title">The Sims 3: World Adventures</div>
+                            <div class="subtitle">Expansion Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="SP01" data-size="0.3">
+                        <img src="icons/sp01.png">
+                        <div>
+                            <div class="title">The Sims 3: High-End Loft Stuff</div>
+                            <div class="subtitle">Stuff Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="EP02" data-size="2.5">
+                        <img src="icons/ep02.png">
+                        <div>
+                            <div class="title">The Sims 3: Ambitions</div>
+                            <div class="subtitle">Expansion Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="SP02" data-size="0.3">
+                        <img src="icons/sp02.png">
+                        <div>
+                            <div class="title">The Sims 3: Fast Lane Stuff</div>
+                            <div class="subtitle">Stuff Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="EP03" data-size="2.4">
+                        <img src="icons/ep03.png">
+                        <div>
+                            <div class="title">The Sims 3: Late Night</div>
+                            <div class="subtitle">Expansion Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="SP03" data-size="0.2">
+                        <img src="icons/sp03.png">
+                        <div>
+                            <div class="title">The Sims 3: Outdoor Living Stuff</div>
+                            <div class="subtitle">Stuff Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="EP04" data-size="1">
+                        <img src="icons/ep04.png">
+                        <div>
+                            <div class="title">The Sims 3: Generations</div>
+                            <div class="subtitle">Expansion Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="SP04" data-size="0.2">
+                        <img src="icons/sp04.png">
+                        <div>
+                            <div class="title">The Sims 3: Town Life Stuff</div>
+                            <div class="subtitle">Stuff Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="EP05" data-size="3.2">
+                        <img src="icons/ep05.png">
+                        <div>
+                            <div class="title">The Sims 3: Pets</div>
+                            <div class="subtitle">Expansion Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="SP05" data-size="0.2">
+                        <img src="icons/sp05.png">
+                        <div>
+                            <div class="title">The Sims 3: Master Suite Stuff</div>
+                            <div class="subtitle">Stuff Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="EP06" data-size="2.8">
+                        <img src="icons/ep06.png">
+                        <div>
+                            <div class="title">The Sims 3: Showtime</div>
+                            <div class="subtitle">Expansion Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="SP06" data-size="0.2">
+                        <img src="icons/sp06.png">
+                        <div>
+                            <div class="title">The Sims 3: Katy Perry Stuff</div>
+                            <div class="subtitle">Stuff Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="SP07" data-size="0.2">
+                        <img src="icons/sp07.png">
+                        <div>
+                            <div class="title">The Sims 3: Diesel Stuff</div>
+                            <div class="subtitle">Stuff Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="EP07" data-size="2.3">
+                        <img src="icons/ep07.png">
+                        <div>
+                            <div class="title">The Sims 3: Supernatural</div>
+                            <div class="subtitle">Expansion Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="EP08" data-size="1.1">
+                        <img src="icons/ep08.png">
+                        <div>
+                            <div class="title">The Sims 3: Seasons</div>
+                            <div class="subtitle">Expansion Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="SP08" data-size="0.2">
+                        <img src="icons/sp08.png">
+                        <div>
+                            <div class="title">The Sims 3: 70s, 80s & 90s Stuff</div>
+                            <div class="subtitle">Stuff Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="EP09" data-size="2.1">
+                        <img src="icons/ep09.png">
+                        <div>
+                            <div class="title">The Sims 3: University Life</div>
+                            <div class="subtitle">Expansion Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="EP10" data-size="1.8">
+                        <img src="icons/ep10.png">
+                        <div>
+                            <div class="title">The Sims 3: Island Paradise</div>
+                            <div class="subtitle">Expansion Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="SP09" data-size="0.3">
+                        <img src="icons/sp09.png">
+                        <div>
+                            <div class="title">The Sims 3: Movie Stuff</div>
+                            <div class="subtitle">Stuff Pack</div>
+                        </div>
+                    </div>
+
+                    <div class="pack selected" data-package="EP11" data-size="2.1">
+                        <img src="icons/ep11.png">
+                        <div>
+                            <div class="title">The Sims 3: Into the Future</div>
+                            <div class="subtitle">Expansion Pack</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="installProgress" class="content">
+
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <div id="currentMessage" style="font-size: 1.5em; margin-bottom: 10px;">Now Installing</div>
+                    <div style="margin-top: 40px;"><img id="currentInstallLogo" src="./logos/base.webp" style="height: 225px;"></div>
+                </div>
+
+                <div style="text-align: center;">
+
+                    <div id="progressCurrent">
+                        <div class="progresstext" style="font-family: 'HelveticaNeueLT';font-size: 0.8em;">Current Pack</div>
+                        <div class="progressbar">
+                            <progress value="0" max="1"></progress>
+                            <span>0/0</span>
+                        </div>
+                    </div>
+
+                    <div id="progressTotal">
+                        <div class="progresstext" style="font-family: 'HelveticaNeueLT';font-size: 0.8em;">Total Progress</div>
+                        <div class="progressbar">
+                            <progress value="0" max="1"></progress>
+                            <span>0/0</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Import Renderer Process -->
+    <script src="./renderer.js"></script>
+</body>
+</html>

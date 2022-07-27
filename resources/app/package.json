@@ -1,0 +1,23 @@
+{
+  "name": "sims3-installer",
+  "version": "1.0.0",
+  "description": "The Sims 3 Complete Installer",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^16.0.2"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.1",
+    "7zip-min": "^1.4.3",
+    "fs-extra": "^10.0.0",
+    "jquery": "^3.6.0",
+    "node-cmd": "^5.0.0",
+    "node-stream-zip": "^1.15.0",
+    "regedit": "^5.1.1",
+    "sweetalert2": "^11.3.0",
+    "systeminformation": "^5.9.16"
+  }
+}
